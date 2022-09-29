@@ -1,11 +1,66 @@
 module.exports = (app, db) => {
 
+
+// Homepage + Exercises navigation options	
 app.get('/', function(req, res) {
      
 	// send the main (and unique) page
     res.setHeader('Content-Type', 'text/html');
-    res.sendFile( __dirname + '/views' + '/ngLocations.html');
+    res.sendFile( __dirname + '/views' + '/homepage.html');
 });
+
+
+app.get('/E1', function(req, res) {
+     
+	// send the main (and unique) page
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile( __dirname + '/views' + '/E1.html');
+});
+
+
+app.get('/E2', function(req, res) {
+     
+	// send the main (and unique) page
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile( __dirname + '/views' + '/E2.html');
+});
+
+// End of Exercise Navigation
+
+
+// To add parcel + Populate cust names + Populate Final Locations
+app.get('/addParcel', function(req, res) {
+     
+	// send the main (and unique) page
+    res.setHeader('Content-Type', 'text/html');
+    res.sendFile( __dirname + '/views' + '/AddParcel.html');
+});
+
+app.get('/ngAddParcel.js', function(req, res) {
+     
+	// send the angular app
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile( __dirname + '/js' + '/ngAddParcel.js');
+});
+
+
+app.get('/getAllCustomers', function(req, res) {
+     
+	let sql = 'SELECT custName, custId FROM Customers';
+	
+
+	// response contains a json array with all tuples
+	let postProcessSQL =   function (err, result) {
+		if (err) throw err;
+
+		res.json(result);
+	};
+
+	db.query(sql, postProcessSQL);
+
+	
+});
+
 
 app.get('/crud', function(req, res) {
      
@@ -30,7 +85,7 @@ app.get('/ngLocations.js', function(req, res) {
 
 app.get('/getAllLocations', function(req, res) {
      
-		let sql = 'SELECT locId, locAddress, locCity FROM locations';
+		let sql = 'SELECT locId, locAddress, city FROM Locations';
 		
 
 		// response contains a json array with all tuples
