@@ -1,0 +1,44 @@
+<!doctype html>
+
+<!-- <html ng-app="angLocApp"> -->
+	<html>
+      <head>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script> -->
+        <!-- <script src="/ngLocationsCRUD.js"></script> -->
+		<meta charset="UTF-8">
+      </head>
+      <body>
+        <h1>Add a new parcel</h1>
+			
+		
+		
+		<h2>Exercise 1:</h2>
+          
+			<h5>
+
+				<form action="/add_parcel_confirmation">
+
+            <label for="Customer_name">Choose a customer id:</label>
+            <select id="customer_id" name="customer_id">
+            <% rows.forEach((row)=>{ %>
+                <option value=" <%= row.custId %> "> <%= row.custId %> </option>
+            <% }) %>
+            </select>
+			<label for="finalLocation">Final Location:</label>
+            <select id="finalLocation" name="finalLocation">
+            <% rows.forEach((row)=>{ %>
+                <option value=" <%= row.finalLocation %> "> <%= row.finalLocation %> </option>
+            <% }) %>
+            </select>
+        <br>
+        <br>
+        <input type="submit", value="GO", name = "/add_parcel_confirmation">
+    </form>
+				<br>
+				<br>
+				<br>
+				<a href = ""> Parcel list </a>
+			</h5>
+      </body>
+    </html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Details </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0" >
+    </head>
+    <body>
+        <h1>
+            Here's the parcel details
+        </h1>
+        
+        <table>
+            <th>
+                Customer ID
+            </th>
+            <th>
+                Parcel ID
+            </th>
+            <th>
+                Final Location ID
+            </th>
+            <% rows.forEach((row)=>{ %>
+                <tr>
+                    <td>
+                        <%= row.custId %> 
+                    </td>
+                    <td>
+                        <%= row.parcelId %> 
+                    </td>
+                    <td>
+                        <%= row.finalLocation %> 
+                    </td>
+                    
+                </tr>
+            <% }) %>
+        </table>
+
+    </body>
+</html>

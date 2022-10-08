@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Details </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0" >
+    </head>
+    <body>
+        <h1>
+Customer Parcels list  </h1>
+       
+<form action="/showallparcels">
+
+    <label for="Customer_name">Choose a customer id:</label>
+    <select id="customer_id" name="customer_id">
+    <% rows.forEach((row)=>{ %>
+        <option value=" <%= row.custId %> "> <%= row.custId %> </option>
+    <% }) %>
+    </select>
+    
+<br>
+<input type="submit", value="Go to parcels list", name = "/showallparcels">
+</form>
+
+    </body>
+</html>
