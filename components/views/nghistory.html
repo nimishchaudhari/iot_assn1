@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html ng-app="ngParcelApp">
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/ngparcelhistory.js"></script>
+		<meta charset="UTF-8">
+      </head>
+      <body>
+        <div ng-controller="ParcelHistoryController">
+
+        <h5> Input parcel id: </h5>
+        <form ng-submit="getparcels()" ng-controller="ParcelHistoryController">
+            <label>Parcel ID <input type="text" size="30" ng-model="parcelId"/> </label>
+            <input type="submit" id="submit" value="Show details" />
+
+        </form>
+        <h2>Raw model</h2>  
+
+        {{ parcels }}
+        {{ test }}
+            <table>		
+                <tr ng-repeat="parc in parcels">
+                    <td>{{ parc.locId }}</td>
+                    <td>{{ parc.date }}</td>
+                    <td>{{ parc.time }}</td>
+                    <td>{{ parc.operation }}</td>
+                </tr>
+            
+            </table>
+           
+        </div>
+      </body>
+    </html>

@@ -10,7 +10,7 @@ let db = mysql.createConnection(
   host: 'localhost',
   user: '21912044',
   password: 'U01RL1',
-  database: 'db_21912044_2'
+  database: 'db_21912044'
  }
 );
 
