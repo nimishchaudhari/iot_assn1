@@ -8,19 +8,10 @@
       </head>
       <body>
         <div ng-controller="ParcelHistoryController">
-
-        <h5> Input parcel id: </h5>
-        <form ng-submit="getparcels()" ng-controller="ParcelHistoryController">
-            <label>Parcel ID <input type="text" size="30" ng-model="parcelId"/> </label>
-            <input type="submit" id="submit" value="Show details" />
-
-        </form>
-        <h2>Raw model</h2>  
-
-        {{ parcels }}
-        {{ test }}
             <table>		
-                <tr ng-repeat="parc in parcels">
+                Informations
+                <tr ng-repeat="parc in parcelinfo">
+
                     <td>{{ parc.locId }}</td>
                     <td>{{ parc.date }}</td>
                     <td>{{ parc.time }}</td>
@@ -28,7 +19,15 @@
                 </tr>
             
             </table>
-           
+            <h2> Input parcel id: </h2>
+            <form ng-submit="getparcels()">
+                <label>Parcel ID <input type="text" size="30" ng-model="parcelId"/> </label>
+                <input type="submit" id="submit" value="Show details" />
+            </form>
+
+        <h2>Raw model</h2>  
+
+        {{ parcels }}
         </div>
       </body>
     </html>

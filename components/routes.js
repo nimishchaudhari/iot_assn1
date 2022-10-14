@@ -2,7 +2,6 @@ const { Console } = require("console");
 const { getSystemErrorMap } = require("util");
 
 module.exports = (app, db) => {
-// Angular part
 
 app.get('/parcelhist', function(req, res) { //Sending HTML
      
@@ -20,7 +19,7 @@ app.get('/oneparcel_hist', function(req, res) {
 	// res.sendFile( __dirname + '/views' + '/nghistory.html');
 	
 	let parcelId = req.query.parcelId
-	console.log(parcelId)
+	console.log(req.query.parcelId)
 	let sql = 'SELECT Located.parcelId, Located.locId, Located.date, Located.operation FROM Located WHERE Located.parcelId = ?';
 	let values = [parcelId]
 	console.log("Im running the query with oneparcel")
@@ -39,29 +38,82 @@ app.get('/oneparcel_hist', function(req, res) {
 
 
 
+
 app.get('/parcel_hist', function(req, res) {
          
-	// History of a parcel html
+	// History of all parcels html
 	// res.setHeader('Content-Type', 'text/html');
 	// res.sendFile( __dirname + '/views' + '/nghistory.html');
 	
-	let parcelId =(req.query.parcelId)
+	// let parcelId = req.query.parcelId
 
 	let sql = 'SELECT locId, date, time, operation FROM Located' // WHERE parcelId = ?';
-	let values = [parcelId]
+	// let values = req.query
+	let values = []
 	console.log("Im running the query")
 	// response contains a json array with all tuples
 	let postProcessSQL =   function (err, result) {
 		if (err) throw err;
+		console.log(result)
 
 		res.json(result);
 		console.log(result)
 
 	};
 
-	db.query(sql,values, postProcessSQL);
+	db.query(sql,values ,postProcessSQL);
 
 });
+
+
+// Adding a transfer operation
+
+app.get('/transfer_html', function(req, res) {
+	res.setHeader('Content-Type', 'text/html');
+    res.sendFile( __dirname + '/views' + '/ngtransferparcel.html');
+});
+
+
+app.get('/transferscript', function(req, res) {
+
+	let status = ""
+	let sql = 'SELECT parcelId,operation FROM Located WHERE parcelId = ?';
+	// let values = req.query
+	let values = req.query.parcelId
+	// response contains a json array with all tuples
+	let postProcessSQL =   function (err, result) {
+		if (err) throw err;
+		console.log(result)
+
+		res.json(result)		
+		console.log(req.query.parcelId + " Parcel status: ")
+
+	};
+
+	db.query(sql,values ,postProcessSQL);
+
+});
+
+app.get('/changeoperation', function(req,res){
+	let sql = "UPDATE `db_21912044`.`Located` SET `operation` = ? WHERE parcelId = ?";
+	// let values = req.query
+	let values = [req.query.newoperation,req.query.parcelId]
+	// response contains a json array with all tuples
+	let postProcessSQL =   function (err, result) {
+		if (err) throw err;
+		res.json(result);
+		// console.log(result)
+	// console.log(req.query.parcelId + " Parcel status: " + result.operation)
+
+	};
+
+	db.query(sql,values ,postProcessSQL);
+
+
+})
+
+
+// end of transfer
 
     app.get('/ngparcelhistory.js', function(req, res) {
          

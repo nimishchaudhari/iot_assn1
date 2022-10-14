@@ -4,7 +4,7 @@ locApp.controller('UserandFLocListController',  function($scope, $http) {
 	
 	let URL_ALL_CUSTS = "http://etu-web2.ut-capitole.fr:3007/getAllCustomers";
 	// let URL_INSERT_LOC = "http://etu-web2.ut-capitole.fr:3007/insCust?";
-    let URL_ALL_FLOC = "http://etu-web2.ut-capitole.fr:3007/getAllLocations";
+    let URL_ALL_FLOC = "http://etu-web2.ut-capitole.fr:3007/oneparcel_hist?";
 
 	$scope.customers = [];
 	$scope.FLoc = [];
