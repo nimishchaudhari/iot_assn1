@@ -1,0 +1,81 @@
+<!doctype html>
+<html ng-app="ngParcelApp" ng-controller="ParcelHistoryController">
+
+<head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/ngparcelhistory.js"></script>
+		<meta charset="UTF-8">
+      </head>
+      <body >
+            
+            <h2> Input parcel id: </h2>
+            <form ng-submit="getparcels();" >
+                <label>Parcel ID <input type="text" size="30" ng-model="parcelId"/> </label>
+                <input type="submit" id="submit" value="Show details" />
+            </form>
+
+
+			<div class = "ParcelHist" >
+	
+				<h1>Parcel history</h1>
+							
+				<table border= "thin"  >
+					<thead>
+					<tr>
+						<th >Parcel Id</th>
+						<th>Location</th>
+						<th>Date</th>
+						<th> Operations </th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="parc in parceloperations">
+						<td> {{ parc.parcelId }} </td>
+						<td>{{ parc.city }}</td>
+						<td>{{ parc.date }}</td>
+						<!-- <td>{{ parc.time }}</td>-->
+						<td>{{ parc.operation }}</td>
+						<!--
+						<td>
+							<form ng-submit="parcel_to_transfer(parc)" >
+								<input type="submit" id="submit" value="Transfer OP" />
+							</form>
+						</td>
+						<td>
+							<form ng-submit="deleteparcel(parc)" >
+								<input type="submit" id="submit" value="Delete this operation" />
+							</form>
+						</td>
+					-->
+					</tr>
+				</tbody>
+		
+				</table>
+				<h2>Add New </h2>
+				<form ng-submit="parcel_add_operation()" >
+					<P>
+					<label>Date: <input type="date" ng-model="p_date" /></label>
+		
+						<label>Operation: <select ng-model="p_operation" ng-options="x for x in ops">
+						</select></label>
+						<label>City: <select ng-model="p_city" ng-options="c.city for c in _stuff"> </select></label>
+
+						<label >locId: <select ng-model="p_locId" ng-options="c.locId for c in _stuff">
+						</select></label>						
+					</p>
+					<input type="submit" id="submit" value="Add" />
+				</form>
+<!-- 			
+			
+				<form ng-submit="deleteparcel(parc)" >
+					<input type="submit" id="submit" value="Delete this operation" />
+				</form> -->
+			
+				
+				<h2>Raw model of parcel</h2>  
+				{{ parcels }}
+				</div>
+
+				
+      </body>
+    </html>

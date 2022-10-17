@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html ng-app="ngParcelApp">
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/ngparcelhistory.js"></script>
+		<meta charset="UTF-8">
+      </head>
+      <body>
+        <h1>Parcel history</h1>
+        <div ng-controller="ParcelHistoryController">
+			
+		<table border="1">
+			<thead>
+			<tr>
+				<th>Parcel Id</th>
+				<th>Location Id</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Operation</th>
+				<th> </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="parc in parcelinfo">
+				<td>{{ parc.parcelId }}</td>
+				<td>{{ parc.locId }}</td>
+				<td>{{ parc.date }}</td>
+				<td>{{ parc.time }}</td>
+				<td>{{ parc.operation }}</td>
+				<td><input type="button" ng-click="showUpdateFormLocation(parc)" value="Update">
+				    <input type="button" ng-click="showConfirmDeleteLocation(parc)" value="Delete"> 
+				</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<h2>Raw model</h2>  
+		{{ parcels }}
+        </div>
+      </body>
+    </html>
+

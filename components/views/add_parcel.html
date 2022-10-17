@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html ng-app="ngParcelApp">
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/ngparcelhistory.js"></script>
+		<meta charset="UTF-8">
+      </head>
+      <body>
+        <div ng-controller="ParcelHistoryController">
+            
+            <h2> Input parcel id: </h2>
+            <form ng-submit="getparcels()" >
+                <label>Parcel ID <input type="text" size="30" ng-model="parcelId"/> </label>
+                <input type="submit" id="submit" value="Show details" />
+            </form>
+
+        <h1>Parcel history</h1>
+        			
+		<table border="1">
+			<thead>
+			<tr>
+				<th>Parcel Id</th>
+				<th>Location Id</th>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Operation</th>
+				<th> </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="parc in singleparcel">
+				<td>{{ parc.parcelId }}</td>
+				<td>{{ parc.locId }}</td>
+				<td>{{ parc.date }}</td>
+				<td>{{ parc.time }}</td>
+				<td>{{ parc.operation }}</td>
+				<td><input type="button" ng-click="showUpdateFormLocation(parc)" value="Update">
+				    <input type="button" ng-click="showConfirmDeleteLocation(parc)" value="Delete"> 
+				</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<h2>Raw model</h2>  
+		{{ parcels }}
+        </div>
+      </body>
+    </html>

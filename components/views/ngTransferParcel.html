@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html ng-app="angParcelsApp">
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="/ngOperations.js"></script>
+		<meta charset="UTF-8">
+      </head>
+      <body>
+        <h1>Add Transfer</h1>
+        <div ng-controller="ParcelHistoryController">
+			
+            Select User : <select ng-model="angParcelsApp"  ng-options="customer.custName for customer in customers">
+				 </select>
+        
+			Select Final Location : <select ng-model="angParcelsApp"  ng-options="loc.city for loc in FLoc">
+				</select>
+		
+		  
+		<h2>Raw model</h2>  
+		{{ customers }}
+        </div>
+      </body>
+    </html>
+
